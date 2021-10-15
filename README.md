@@ -1,6 +1,20 @@
 # extreme_test_sample
 
-A new Flutter project.
+A Flutter extreme test sample project.
+
+## command of run integration test
+
+see [An introduction to integration testing](https://flutter.dev/docs/cookbook/testing/integration/introduction) .
+
+```shell
+# you run test program file of integration test on direct.
+$ flutter test integration_test/app_test.dart
+```
+
+```shell
+# you run all test program files of integration test.
+$ flutter test integration_test
+```
 
 ## Getting Started
 
