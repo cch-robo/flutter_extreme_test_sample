@@ -42,5 +42,6 @@ void main() {
     // Verify that our counter has incremented.
     expect(1, viewModel.counter);
     print('after increment - counter = ${viewModel.counter}');
+    print('test end');
   });
 }
