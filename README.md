@@ -30,6 +30,8 @@ test_driver/
 
 ## command of run widget test
 
+see [An introduction to unit testing](https://flutter.dev/docs/cookbook/testing/unit/introduction)
+
 ```shell
 # you run test program file of widget test on direct.
 $ flutter test test/widget_test.dart
