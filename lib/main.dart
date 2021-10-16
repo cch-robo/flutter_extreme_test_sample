@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(
-    const ProviderScope(child: MyApp()),
-  );
+  runApp(providerScope);
 }
+
+const ProviderScope providerScope = ProviderScope(child: MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -33,9 +33,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final counterProvider = ChangeNotifierProvider((ref) =>
-      Factory.create<CounterViewModel>(CounterViewModel(),
-          id: "CounterViewModel"));
+  /*
+  // オリジナルの counterProvider 設定
+  final counterProvider = ChangeNotifierProvider((ref) => CounterViewModel());
+  */
+  // テスト時にインスタンスを差替可能にした counterProvider 設定
+  final counterProvider =
+      ChangeNotifierProvider((ref) => Factory.create<CounterViewModel>(
+            CounterViewModel(),
+            id: "CounterViewModel",
+          ));
 
   @override
   Widget build(BuildContext context) {
