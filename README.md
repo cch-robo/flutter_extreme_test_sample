@@ -28,6 +28,21 @@ test_driver/
   + integration_test.dart    # Web テスト用のドライバー設定（特に使わない） 
 ```
 
+## command of run widget test
+
+```shell
+# you run test program file of widget test on direct.
+$ flutter test test/widget_test.dart
+
+# you run test program file of extreme widget test on direct.
+$ flutter test test/widget_extreme_test.dart
+```
+
+```shell
+# you run all test program files of integration test.
+$ flutter test test/
+```
+
 ## command of run integration test
 
 see [An introduction to integration testing](https://flutter.dev/docs/cookbook/testing/integration/introduction) .
@@ -42,5 +57,5 @@ $ flutter test integration_test/app_extreme_test.dart
 
 ```shell
 # you run all test program files of integration test.
-$ flutter test integration_test
+$ flutter test integration_test/
 ```
