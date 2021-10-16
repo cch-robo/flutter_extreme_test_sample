@@ -1,4 +1,5 @@
 import 'package:extreme_test_sample/main.dart' as app;
+import 'package:extreme_test_sample/swappable_instance_factory.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -10,16 +11,16 @@ void main() {
   setUp(() {
     // ViewModel をテスト中に外部参照可能にするため、
     // テスト中にインスタンス差替可能なファクトリに、CounterViewModel を設定。
-    app.Factory.setTesting(true);
+    Factory.setTesting(true);
     viewModel = app.CounterViewModel();
-    app.Factory.setSwapInstance<app.CounterViewModel>(viewModel,
+    Factory.setSwapInstance<app.CounterViewModel>(viewModel,
         id: "CounterViewModel");
   });
 
   tearDown(() {
     // テスト中にインスタンス差替可能なファクトリの設定をクリア。
-    app.Factory.clear();
-    app.Factory.setTesting(false);
+    Factory.clear();
+    Factory.setTesting(false);
   });
 
   group('end-to-end test', () {
