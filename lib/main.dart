@@ -88,6 +88,8 @@ class Factory {
   /// テスト時でない場合は、引数指定された [instance] を生成インスタンスとして返します。
   ///
   /// テスト時に、[id] に合致する差替インスタンスが設定されていれば、差し替えて返します。
+  ///
+  /// 注意）差替インスタンスが、差替元と同じ型でない場合は、テスト時にクラッシュします。
   static T create<T>(T instance, {String id = ""}) {
     // テスト中でなければ、指定インスタンスをそのまま返す。
     if (!_SwappableFWT.instance._isTesting) return instance;
@@ -104,9 +106,9 @@ class Factory {
   ///
   /// [swapInstance] を [id] をキーにした差替インスタンスとして登録します。
   ///
-  /// 差替インスタンスが、差替元と同じ型でない場合は、テスト時にクラッシュを発生させます。
-  ///
   /// テスト時でない場合は、無視されます。
+  ///
+  /// 注意）差替インスタンスが、差替元と同じ型でない場合は、テスト時にクラッシュします。
   static void setSwapInstance<T>(T? swapInstance, {String id = ""}) {
     // テスト中でない場合は、何もしない。
     if (!_SwappableFWT.instance._isTesting) return;
