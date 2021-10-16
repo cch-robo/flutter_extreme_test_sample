@@ -33,7 +33,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final counterProvider = ChangeNotifierProvider((ref) => CounterViewModel());
+  final counterProvider = ChangeNotifierProvider((ref) =>
+      Factory.create<CounterViewModel>(CounterViewModel(),
+          id: "CounterViewModel"));
 
   @override
   Widget build(BuildContext context) {
