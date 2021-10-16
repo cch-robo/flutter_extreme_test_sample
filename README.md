@@ -20,12 +20,12 @@ test/
   + widget_test.dart         # 通常のウィジェットテスト（画面のカウンタ表示から検証を行う）
   + widget_extreme_test.dart # extremeウィジェット単体テスト（ViewModelを参照して検証を行う）
  
-integration_test/           # アプリをシミュレータにインストールしてテストを行う。
-  + app_test.dart           # 通常のアプリ E2E テスト（画面のカウンタ表示から検証を行う）
-  + app_extreme_test.dart   # extreme アプリ 結合テスト（ViewModelを参照して検証を行う）
+integration_test/            # アプリをシミュレータにインストールしてテストを行う。
+  + app_test.dart            # 通常のアプリ E2E テスト（画面のカウンタ表示から検証を行う）
+  + app_extreme_test.dart    # extreme アプリ 結合テスト（ViewModelを参照して検証を行う）
 
 test_driver/
-  + integration_test.dart   # Web テスト用のドライバー設定（特に使わない） 
+  + integration_test.dart    # Web テスト用のドライバー設定（特に使わない） 
 ```
 
 ## command of run integration test
