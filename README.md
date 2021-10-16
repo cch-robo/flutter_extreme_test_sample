@@ -1,4 +1,4 @@
-# extreme_test_sample
+# flutter_extreme_test_sample
 
 インスタンス差替可能なファクトリを利用して、  
 アプリケーションのウィジェットツリー中の任意オブジェクトをテスト時に外部参照可能にする、  
