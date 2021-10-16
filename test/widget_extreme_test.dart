@@ -13,7 +13,7 @@ void main() {
     Factory.setTesting(true);
     viewModel = app.CounterViewModel();
     Factory.setSwapInstance<app.CounterViewModel>(viewModel,
-        id: "CounterViewModel");
+        id: 'CounterViewModel');
   });
 
   tearDown(() {
@@ -32,7 +32,7 @@ void main() {
     // 画面初期表示時のカウンター値を ViewModel から直接確認する。
     // Verify that our counter starts at 0.
     expect(0, viewModel.counter);
-    print("before increment - counter = ${viewModel.counter}");
+    print('before increment - counter = ${viewModel.counter}');
 
     // Tap the '+' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.add));
@@ -41,6 +41,6 @@ void main() {
     // Increment FABクリック後の カウンター値を ViewModel から直接確認する。
     // Verify that our counter has incremented.
     expect(1, viewModel.counter);
-    print("after increment - counter = ${viewModel.counter}");
+    print('after increment - counter = ${viewModel.counter}');
   });
 }

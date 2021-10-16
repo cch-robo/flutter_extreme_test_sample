@@ -15,7 +15,7 @@ void main() {
     Factory.setTesting(true);
     viewModel = app.CounterViewModel();
     Factory.setSwapInstance<app.CounterViewModel>(viewModel,
-        id: "CounterViewModel");
+        id: 'CounterViewModel');
   });
 
   tearDown(() {
@@ -24,7 +24,7 @@ void main() {
     Factory.setTesting(false);
   });
 
-  group('end-to-end test', () {
+  group('end-to-end extreme test', () {
     // インスタンス差替可能ファクトリを利用して、ViewModel を外部参照可能にした検証
     testWidgets('tap on the floating action button, extreme verify counter',
         (WidgetTester tester) async {
@@ -34,7 +34,7 @@ void main() {
       // 画面初期表示時のカウンター値を ViewModel から直接確認する。
       // Verify the counter starts at 0.
       expect(0, viewModel.counter);
-      print("before increment - counter = ${viewModel.counter}");
+      print('before increment - counter = ${viewModel.counter}');
 
       // Finds the floating action button to tap on.
       final Finder fab = find.byTooltip('Increment');
@@ -48,7 +48,8 @@ void main() {
       // Increment FABクリック後の カウンター値を ViewModel から直接確認する。
       // Verify the counter increments by 1.
       expect(1, viewModel.counter);
-      print("after increment - counter = ${viewModel.counter}");
+      print('after increment - counter = ${viewModel.counter}');
+      print('test end');
     });
   });
 }
