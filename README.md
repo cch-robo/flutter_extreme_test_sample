@@ -76,6 +76,11 @@ MyHomePageからウィジェットツリーを切り出すと providerオブジ�
 MyHomePage を当該テスト専用のウィジェットツリーに追加した形のテストコード作成が必要です。  
 これは、本来のアプリコードを改変した環境でのテストになります。
 
+* *Riverpodを使っている場合は、当該テスト用のウィジェットツリーとして、  
+  ProviderScope()の overrides: オプション引数でクロージャ内の  
+  必要なproviderオブジェクトを上書きしたルートウィジェットを作るでしょう。*  
+  See [Overriding the behavior of a provider during tests.](https://riverpod.dev/docs/cookbooks/testing/#overriding-the-behavior-of-a-provider-during-tests)
+
 サンプル内部では、  
 **境界付き依存性レベルツリー** に、アプリの全てのコンポーネントが含まれるようにするため、  
 Widget test や Integration test でのアプリルートからのウィジェットツリーを対象に、  
