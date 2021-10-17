@@ -2,7 +2,7 @@
 
 インスタンス差替可能なファクトリを利用して、  
 アプリケーションのウィジェットツリー中の任意オブジェクトをテスト時に外部参照可能にする、  
-エクストリーム（極端） Widget test ＆ Integration test のサンプルです。
+エクストリーム（極端）な Widget test ＆ Integration test についてのサンプルです。
 
 サンプル中では、  
 アプリケーションのウィジェットツリー中の ViewModel をテスト時に外部参照可能にすることで、  
@@ -28,36 +28,57 @@ test_driver/
   + integration_test.dart    # Web テスト用のドライバー設定（特に使わない） 
 ```
 
-## command of run widget test
+## widget test 実行コマンド
 
 see [An introduction to unit testing](https://flutter.dev/docs/cookbook/testing/unit/introduction)
 
 ```shell
-# you run test program file of widget test on direct.
+# widget test ファイルを直接実行するコマンド
 $ flutter test test/widget_test.dart
 
-# you run test program file of extreme widget test on direct.
+# extreme widget test ファイルを直接実行するコマンド
 $ flutter test test/widget_extreme_test.dart
 ```
 
 ```shell
-# you run all test program files of integration test.
+# widget test ディレクトリの全テストファイルを実行するコマンド
 $ flutter test test/
 ```
 
-## command of run integration test
+## integration test 実行コマンド
 
 see [An introduction to integration testing](https://flutter.dev/docs/cookbook/testing/integration/introduction) .
 
 ```shell
-# you run test program file of integration test on direct.
+# integration test ファイルを直接実行するコマンド
 $ flutter test integration_test/app_test.dart
 
-# you run test program file of extreme integration test on direct.
+# extreme integration test ファイルを直接実行するコマンド
 $ flutter test integration_test/app_extreme_test.dart
 ```
 
 ```shell
-# you run all test program files of integration test.
+# integration test ディレクトリの全テストファイルを実行するコマンド
 $ flutter test integration_test/
 ```
+
+## 留意事項
+このサンプルプロジェクトは、一般的なテストコードのサンプルではないことに留意ください。
+
+これは、テストコード記述を最小にするための **extreme/極端** なサンプルです。  
+一般的なテストコードのサンプルではないことに留意ください。
+
+たとえば、Reverpodの ProviderScopeを ウィジェットツリーのルートに配置するケースでは、  
+Widget test において `WidgetTester#pumpWidget(MyHomePage())`のように、  
+MyHomePageからウィジェットツリーを切り出すと providerオブジェクトが機能しません。
+
+ウィジェットツリーのルートから扱わずに、MyHomePageのコンポーネントをテストする場合は、  
+MyHomePage を当該テスト専用のウィジェットツリーに追加した形のテストコード作成が必要です。  
+これは、本来のアプリコードを改変した環境でのテストになります。
+
+サンプル内部では、  
+**境界付き依存性レベルツリー** に、アプリの全てのコンポーネントが含まれるようにするため、  
+Widget test や Integration test でのアプリルートからのウィジェットツリーを対象に、  
+アプリコード中に、テスト時にインスタンスの差替が可能なファクトリを利用することで、  
+ViewModelなどの任意コンポーネント・オブジェクトをテスト側から参照可能にして、  
+テスト中のコンポーネントの振る舞い（内部状態）を検証しています。
