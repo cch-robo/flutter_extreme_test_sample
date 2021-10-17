@@ -68,7 +68,7 @@ $ flutter test integration_test/
 これは、テストコード記述を最小にするための **extreme/極端** なサンプルです。  
 一般的なテストコードのサンプルではないことに留意ください。
 
-たとえば、Reverpodの ProviderScopeを ウィジェットツリーのルートに配置するケースでは、  
+たとえば、Riverpodの ProviderScopeを ウィジェットツリーのルートに配置するケースでは、  
 Widget test において `WidgetTester#pumpWidget(MyHomePage())`のように、  
 MyHomePageからウィジェットツリーを切り出すと providerオブジェクトが機能しません。
 
