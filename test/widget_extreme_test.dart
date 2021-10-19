@@ -38,6 +38,10 @@ void main() {
 
     // Tap the '+' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.add));
+
+    // この時点では、カウンタ値が画面反映されていない。
+    expect(find.text('0'), findsOneWidget);
+
     await tester.pump();
 
     // Verify that our counter has incremented.

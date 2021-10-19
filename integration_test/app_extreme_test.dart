@@ -44,6 +44,9 @@ void main() {
       // Emulate a tap on the floating action button.
       await tester.tap(fab);
 
+      // この時点では、カウンタ値が画面反映されていない。
+      expect(find.text('0'), findsOneWidget);
+
       // Trigger a frame.
       await tester.pumpAndSettle();
 
