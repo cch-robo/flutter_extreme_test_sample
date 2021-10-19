@@ -31,8 +31,10 @@ void main() {
       app.main();
       await tester.pumpAndSettle();
 
-      // 画面初期表示時のカウンター値を ViewModel から直接確認する。
       // Verify the counter starts at 0.
+      expect(find.text('0'), findsOneWidget);
+
+      // 画面初期表示時のカウンター値を ViewModel から直接確認する。
       expect(0, viewModel.counter);
       print('before increment - counter = ${viewModel.counter}');
 
@@ -45,8 +47,10 @@ void main() {
       // Trigger a frame.
       await tester.pumpAndSettle();
 
-      // Increment FABクリック後の カウンター値を ViewModel から直接確認する。
       // Verify the counter increments by 1.
+      expect(find.text('1'), findsOneWidget);
+
+      // Increment FABクリック後の カウンター値を ViewModel から直接確認する。
       expect(1, viewModel.counter);
       print('after increment - counter = ${viewModel.counter}');
       print('test end');
