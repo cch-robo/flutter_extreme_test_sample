@@ -1,5 +1,19 @@
 # flutter_extreme_test_sample
 
+## このプロジェクトについて
+
+このプロジェクトは、  
+[DevFest Kyoto 2021 - Flutterテスト講座](https://gdgkyoto.connpass.com/event/226491/) の
+セッション [**テスト設計できるようになろう**](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing) の  
+*Widget testで状態プロパティを参照する - エクストリームテスト* のサンプルプロジェクトです。  
+セッション内容については、スライド資料を御参照ください。
+
+* セッション発表スライド  
+  [テスト設計できるようになろう](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing)
+
+
+## プロジェクトコンセプト
+
 インスタンス差替可能なファクトリを利用して、  
 アプリケーションのウィジェットツリー中の任意オブジェクトをテスト時に外部から注入する、  
 エクストリーム（極端）な Widget test ＆ Integration test についてのサンプルです。
@@ -88,13 +102,3 @@ Widget test や Integration test でのアプリルートからのウィジェ�
 ViewModelなどの任意コンポーネント・オブジェクトをテスト側から注入し参照可能にして、  
 テスト中のコンポーネントの振る舞い（内部状態）を検証しています。
 
-
-## このプロジェクトについて
-このプロジェクトは、  
-[DevFest Kyoto 2021 - Flutterテスト講座](https://gdgkyoto.connpass.com/event/226491/) の
-セッション [**テスト設計できるようになろう**](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing) の  
-*Widget testで状態プロパティを参照する - エクストリームテスト* のサンプルプロジェクトです。  
-セッション内容については、スライド資料を御参照ください。
-
-* セッション発表スライド  
-  [テスト設計できるようになろう](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing)
