@@ -1,5 +1,6 @@
 import 'package:extreme_test_sample/main.dart' as app;
 import 'package:extreme_test_sample/swappable_instance_factory.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -36,7 +37,7 @@ void main() {
 
       // 画面初期表示時のカウンター値を ViewModel から直接確認する。
       expect(0, viewModel.counter);
-      print('before increment - counter = ${viewModel.counter}');
+      debugPrint('before increment - counter = ${viewModel.counter}');
 
       // Finds the floating action button to tap on.
       final Finder fab = find.byTooltip('Increment');
@@ -55,8 +56,8 @@ void main() {
 
       // Increment FABクリック後の カウンター値を ViewModel から直接確認する。
       expect(1, viewModel.counter);
-      print('after increment - counter = ${viewModel.counter}');
-      print('test end');
+      debugPrint('after increment - counter = ${viewModel.counter}');
+      debugPrint('test end');
     });
   });
 }

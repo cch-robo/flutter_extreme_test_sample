@@ -11,15 +11,15 @@ class Factory {
   /// テスト時に、[id] に合致する差替インスタンスが設定されていれば、差し替えて返します。
   ///
   /// 注意）差替インスタンスが、差替元と同じ型でない場合は、テスト時にクラッシュします。
-  static T create<T>(T instance, {String id = ""}) {
+  static T create<T>(T instance, {String id = ''}) {
     // テスト中でなければ、指定インスタンスをそのまま返す。
     if (!_SwappableFWT.instance._isTesting) return instance;
 
     // テスト中かつ、差替設定があれば差し替えて返す。
     T? swapInstance = id.isNotEmpty
-        ? _SwappableFWT.instance.get(id)
+        ? _SwappableFWT.instance.get(id) as T
         : _SwappableFWT.instance
-            .get(instance != null ? instance.runtimeType.toString() : "");
+            .get(instance != null ? instance.runtimeType.toString() : '') as T;
     return (swapInstance == null) ? instance : swapInstance;
   }
 
@@ -79,12 +79,12 @@ class _SwappableFWT {
     return _singleton;
   }
 
-  Map<String, dynamic> _map = {};
+  final Map<String, dynamic> _map = <String, dynamic>{};
 
   /// 設定済みの差替インスタンスをクリアします。
   void clear() {
     _map.clear();
-    _map[""] = null;
+    _map[''] = null;
   }
 
   /// 差替インスタンスを設定します。
