@@ -11,8 +11,8 @@ void main() {
   setUp(() {
     Factory.setTesting(true);
 
-    // ViewModel をテスト中に外部参照可能にするため、
-    // テスト中にインスタンス差替可能なファクトリに、ロジック を設定。
+    // 画面ロジックをテスト中に外部参照可能にするため、
+    // テスト中にインスタンス差替可能なファクトリに、ビジネスロジックを設定。
     userListPageLogic = app.UserListPageLogic();
     Factory.setSwapInstance<app.UserListPageLogic>(userListPageLogic,
         id: 'UserListPageLogic');
@@ -28,20 +28,19 @@ void main() {
     Factory.setTesting(false);
   });
 
-  // インスタンス差替可能ファクトリを利用して、ViewModel を外部参照可能にした検証
-  testWidgets('Counter increments extreme smoke test',
+  /// インスタンス差替可能ファクトリを利用して、ビジネスロジックを外部参照可能にした検証
+  testWidgets('一覧画面から選択ユーザの詳細画面への画面遷移検証 extreme smoke test',
       (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(app.MyApp());
 
-    // ユーザ一覧画面のユーザ数を logic から直接確認する。
+    // リポジトリから全ユーザ情報を取得できたか、ユーザ一覧画面の logic から直接確認する。
     expect(30, userListPageLogic.users.length);
     debugPrint('before transition - users = ${userListPageLogic.users.length}');
 
+    // ユーザ一覧から apple をタッチ
+    // （この時点では、画面遷移していない）
     final Finder item = find.text('apple');
-
-    // Emulate a tap on the floating action button.
-    // この時点では、画面遷移していない。
     await tester.tap(item);
 
     await tester.pump();
@@ -51,7 +50,7 @@ void main() {
     expect('アップル', userDetailPageLogic.user.profile);
     debugPrint('after transition - user(name:${userDetailPageLogic.user.name}, '
         'assetUrl:${userDetailPageLogic.user.assetUrl}, '
-        'profile:${userDetailPageLogic.user.profile}');
+        'profile:${userDetailPageLogic.user.profile})');
     debugPrint('test end');
   });
 }

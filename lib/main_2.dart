@@ -44,25 +44,10 @@ class _UserListPageState extends State<UserListPage> {
   final UserListPageLogic logic =
       Factory.create(UserListPageLogic(), id: 'UserListPageLogic');
 
-  void onNavigatorPush(BuildContext context, UserModel user) {
-    debugPrint('UserListPage onNavigatorPush(name:${user.name}, '
-        'assetUrl: ${user.assetUrl}, '
-        'profile:${user.profile})');
-    logic.setArgument(user: user);
-
-    // 画面遷移
-    Navigator.of(context).push<UserDetailPage>(MaterialPageRoute(
-      builder: (context) {
-        return const UserDetailPage(
-          title: 'UserDetail Page',
-        );
-      },
-    ));
-  }
-
   @override
   Widget build(BuildContext context) {
-    // ロジックにアプリ全体共有 UserRepository をセットアップ
+    // ビジネスロジックにアプリ全体共有画面遷移引数設定 PageTransitionUserArgument と
+    // アプリ全体共有 UserRepository をセットアップ
     logic.setup(
         (context.findAncestorWidgetOfExactType<MyApp>() as MyApp).argument,
         (context.findAncestorWidgetOfExactType<MyApp>() as MyApp).repository);
@@ -79,7 +64,7 @@ class _UserListPageState extends State<UserListPage> {
               'profile:${user.profile})');
 
           return GestureDetector(
-            onTap: () => onNavigatorPush(context, user),
+            onTap: () => logic.onNavigatorPush(context, user),
             // 画像は縦横同じサイズとする。
             child: Container(
               height: 100.0,
@@ -98,6 +83,7 @@ class _UserListPageState extends State<UserListPage> {
                       ),
                     ),
                   ),
+                  // ユーザ名
                   Container(
                     color: Colors.transparent,
                     padding: const EdgeInsets.all(8.0),
@@ -140,13 +126,13 @@ class UserDetailPage extends StatefulWidget {
 }
 
 class _UserDetailPageState extends State<UserDetailPage> {
-  // テスト時にインスタンスを差替可能にした UserDetailPageLogic 設定
+  // テスト時にインスタンスを差替可能にした UserDetailPageLogic
   final UserDetailPageLogic logic =
       Factory.create(UserDetailPageLogic(), id: 'UserDetailPageLogic');
 
   @override
   Widget build(BuildContext context) {
-    // ロジックにアプリ全体共有画面遷移引数設定 PageTransitionUserArgument から
+    // ビジネスロジックにアプリ全体共有画面遷移引数設定 PageTransitionUserArgument から
     // User をセットアップ
     logic.setup(
         (context.findAncestorWidgetOfExactType<MyApp>() as MyApp).argument);
@@ -160,7 +146,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
         color: Colors.grey[200],
         child: Column(
           children: <Widget>[
-            // 画像＋タイトル
+            // 画像＋ユーザ名
             Row(
               children: <Widget>[
                 // 画像：縦横同じサイズとする。
@@ -228,7 +214,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
   }
 }
 
-/// ユーザ一覧画面ロジック
+/// ユーザ一覧画面ビジネスロジック
 class UserListPageLogic {
   UserListPageLogic();
 
@@ -244,6 +230,21 @@ class UserListPageLogic {
     return _repository.users[index];
   }
 
+  void onNavigatorPush(BuildContext context, UserModel user) {
+    // 画面遷移パラメータ設定
+    debugPrint('UserListPageLogic onNavigatorPush(name:${user.name})');
+    setArgument(user: user);
+
+    // 画面遷移
+    Navigator.of(context).push<UserDetailPage>(MaterialPageRoute(
+      builder: (context) {
+        return const UserDetailPage(
+          title: 'UserDetail Page',
+        );
+      },
+    ));
+  }
+
   bool _isAlreadySetup = false;
   void setup(PageTransitionUserArgument argument, UserRepository repository) {
     if (_isAlreadySetup) return;
@@ -253,7 +254,7 @@ class UserListPageLogic {
   }
 }
 
-/// ユーザ詳細画面ロジック
+/// ユーザ詳細画面ビジネスロジック
 class UserDetailPageLogic {
   UserDetailPageLogic();
 
