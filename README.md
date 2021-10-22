@@ -96,7 +96,8 @@ MyHomePage を当該テスト専用のウィジェットツリーに追加した
   See [Overriding the behavior of a provider during tests.](https://riverpod.dev/docs/cookbooks/testing/#overriding-the-behavior-of-a-provider-during-tests)
 
 サンプル内部では、  
-**境界付き依存性レベルツリー** に、アプリの全てのコンポーネントが含まれるようにするため、  
+**境界付きの上意下達のフローをとるコンポーネントツリー** に、  
+アプリの全てのコンポーネントが含まれるようにするため、  
 Widget test や Integration test でのアプリルートからのウィジェットツリーを対象に、  
 アプリコード中に、テスト時にインスタンスの差替が可能なファクトリを利用することで、  
 ViewModelなどの任意コンポーネント・オブジェクトをテスト側から注入し参照可能にして、  
