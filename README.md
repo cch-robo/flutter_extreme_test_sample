@@ -1,8 +1,8 @@
 # flutter_extreme_test_sample
 
-## このプロジェクトについて
+## このリポジトリについて
 
-このプロジェクトは、  
+このリポジトリは、  
 [DevFest Kyoto 2021 - Flutterテスト講座](https://gdgkyoto.connpass.com/event/226491/) の
 セッション [**テスト設計できるようになろう**](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing) の  
 *Widget testで状態プロパティを参照する - エクストリームテスト* のサンプルプロジェクトです。  
