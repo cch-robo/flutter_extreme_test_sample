@@ -26,6 +26,12 @@ void main() {
       Factory.setTesting(false);
     });
 
+    // ３秒間処理待機させる
+    Future<void> asyncWait() {
+      final Future<void> future = Future.delayed(const Duration(seconds: 3));
+      return future;
+    }
+
     // インスタンス差替可能ファクトリを利用して、ViewModel を外部参照可能にした検証
     testWidgets('tap on the floating action button, extreme verify counter',
         (WidgetTester tester) async {
@@ -38,6 +44,9 @@ void main() {
       // 画面初期表示時のカウンター値を ViewModel から直接確認する。
       expect(0, viewModel.counter);
       debugPrint('before increment - counter = ${viewModel.counter}');
+
+      // 画面表示を３秒間維持する
+      await asyncWait();
 
       // Finds the floating action button to tap on.
       final Finder fab = find.byTooltip('Increment');
@@ -57,6 +66,10 @@ void main() {
       // Increment FABクリック後の カウンター値を ViewModel から直接確認する。
       expect(1, viewModel.counter);
       debugPrint('after increment - counter = ${viewModel.counter}');
+
+      // 画面表示を３秒間維持する
+      await asyncWait();
+
       debugPrint('test end');
     });
   });
