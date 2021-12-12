@@ -3,10 +3,6 @@ name: extreme widget test
 on:
   pull_request:
     types: [opened, synchronize]
-  push:
-    branches:
-      - main
-      - develop
 jobs:
   extreme_widget_test:
     name: flutter extreme widget test
