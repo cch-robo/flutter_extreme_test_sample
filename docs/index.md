@@ -13,6 +13,6 @@
 * セッション発表スライド  
   [テスト設計できるようになろう](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing)
 
-Flutterプロジェクトの [GitHub Actions](https://docs.github.com/en/actions) 対応については、  
+Flutterプロジェクト-リポジトリの [GitHub Actions](https://docs.github.com/en/actions) 対応については、  
 [*flutter github actions*](https://www.google.com/search?q=flutter+github+actions&oq=flutter+github+actions&ie=UTF-8) でググれば、既に多くの方々が資料を公開されていますので、  
 レポートでは、主に [**nektos/act**](https://github.com/nektos/act) を使ったローカルでの GitHub Actions 対応について紹介します。
