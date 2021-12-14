@@ -275,7 +275,7 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 
 - **私の macOS環境では、act による GitHub Actions ローカル実行に成功していません。**  
   Ubuntu 20.04 LTS環境(Intel cpu)では、問題なく act によるローカル実行に成功しましたが、  
-  残念ながら私の M1 Macbook環境では、`flutter pug get`タスクでエラーが発生して終了するため、  
+  残念ながら私の M1 Macbook環境では、`flutter pub get`タスクでエラーが発生して終了するため、  
   ローカルでの GitHub Actions ワークフロー実行に成功していないことを補足いたします。  
   <img src="./images/act_pull_request_failed_m1_macbook.png" width="800px" border="1" />
 
