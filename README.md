@@ -9,7 +9,11 @@
 セッション内容については、スライド資料を御参照ください。
 
 * セッション発表スライド  
-  [テスト設計できるようになろう](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing)
+  [テスト設計できるようになろう](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing)  
+
+
+* 補足：リポジトリの GitHub Actions によるワークフロー対応レポート  
+  [GitHub Actions ワークフロー対応レポート（PRによるテスト実行とローカル実行対応）](https://cch-robo.github.io/flutter_extreme_test_sample/index.html)  
 
 
 ## プロジェクトコンセプト
