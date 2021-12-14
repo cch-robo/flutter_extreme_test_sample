@@ -291,7 +291,7 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 
 
 - **ローカル GitHub Actions ワークフロー実行での Widget test 成功の確認**  
-ターミナル出力の末尾には、`flutter exstreme widget test`タスクの 起動 `Run` 〜 テスト成功 `Success` までが出力されています。  
+ターミナル出力の末尾には、`flutter exstreme widget test`タスクの 起動`Run` 〜 テスト成功`Success` までが出力されています。  
 ```shell
 [extreme widget test/flutter extreme widget test] ⭐  Run flutter exstreme widget test
 [extreme widget test/flutter extreme widget test]   🐳  docker exec cmd=[bash --noprofile --norc -e -o pipefail /home/rie/development/workspaces/github_actions/flutter_extreme_test_sample/workflow/4] user= workdir=
