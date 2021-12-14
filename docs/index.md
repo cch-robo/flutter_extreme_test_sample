@@ -190,6 +190,7 @@ $ which act
 /usr/local/bin/act
 ```
 
+
 ### act コマンドを使ってみる。
 
 - act コマンドでの引数について  
@@ -272,6 +273,8 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
   [catthehacker/docker_images](https://github.com/catthehacker/docker_images) ⇒ [https://github.com/catthehacker/docker_images](https://github.com/catthehacker/docker_images)  
 
 
+### act によるローカル GitHub Actions ワークフロー実行
+
 - **act によるローカル GitHub Actions ワークフロー実行**  
 本件のワークフローでは、`pull_request:`イベントをトリガーに指定していますので、  
 ターミナルで `$ act pull_request` のようにオプションでイベントを指定すれば、  
@@ -295,6 +298,7 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 [extreme widget test/flutter extreme widget test]   ✅  Success - flutter exstreme widget test
 ```
 
+
 ## エクストリームテストについて
 
 - エクストリームテストとは、[**テスト設計できるようになろう**](https://drive.google.com/file/d/1OznsKYxa_VSkrAwuH2cqpf1ZHxBNsLEg/view?usp=sharing) での独自用語です。  
@@ -305,7 +309,7 @@ Widget test や Integration test の中で、テストダブルの注入やコ�
 　  
 *Riverpodを使っているのでしたら、*  
 *当該テスト用のウィジェットツリーとして、ProviderScope()の overrides: オプション引数で*  
-*クロージャ内の必要なproviderオブジェクトを上書きしたルートウィジェットを作るでしょう。*  
+*クロージャ内の必要なproviderオブジェクトを上書きしたルートウィジェットを作っても良いでしょう。*  
 See [Overriding the behavior of a provider during tests.](https://riverpod.dev/docs/cookbooks/testing/#overriding-the-behavior-of-a-provider-during-tests)
 
 
@@ -336,6 +340,14 @@ Widget test であってもアプリのコンポーネントツリー内の任�
 
 - `main2.dart` Widget test のログ出力  
 <img src="./images/extreme2_widget_test_log.png" width="800px" border="1" />  
+
+
+## 希望的観測
+
+- **CI/CD ワークフロー作成のための布石**  
+  flutter開発プロダクトが成長していくようになった昨今、自動テストとデプロイは益々重要になっていくと思います。  
+  act を使えば、flutter 環境においてもローカルでの GitHub Actions ワークフローが実行できることが確認できました。  
+  これで GitHub Actions 動作確認のためだけの無為な `push`や `pull request`なしに、CI/CD ワークフローを試せそうです。  
 
 
 ## まとめ
