@@ -205,7 +205,7 @@ options には、`act ｰl` ⇒ デフォルトアクション一覧や、`act -
 
 
 - act 実行時には、以下のような WARN警告や 選択を促されることがあります。  
-![act runtime warm](images/warm.png)
+![act runtime warm](./images/warm.png)
 
 
 - WARNと選択要求の概要
@@ -271,6 +271,13 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
   - 初回実行時には、1GB ほどのイメージ・ダウンロードが発生しました。
   - act がダウンロードしている、Ubuntu のイメージ保管先  
   [catthehacker/docker_images](https://github.com/catthehacker/docker_images) ⇒ [https://github.com/catthehacker/docker_images](https://github.com/catthehacker/docker_images)  
+
+
+- **私の macOS環境では、act による GitHub Actions ローカル実行に成功していません。**  
+  Ubuntu 20.04 LTS環境では、問題なく act によるローカル実行に成功しましたが、  
+  残念ながら私の M1 Macbook環境では、`flutter pug get`タスクでエラーが発生して終了するため、  
+  ローカルでの GitHub Actions ワークフロー実行に成功していないことを補足いたします。  
+  <img src="./images/act_pull_request_failed_m1_macbook.png" width="800px" border="1" />
 
 
 ### act によるローカル GitHub Actions ワークフロー実行
