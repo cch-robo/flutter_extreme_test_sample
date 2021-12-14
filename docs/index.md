@@ -15,7 +15,7 @@
 
 Flutterプロジェクト-リポジトリの [GitHub Actions](https://docs.github.com/en/actions) 対応については、  
 [*flutter github actions*](https://www.google.com/search?q=flutter+github+actions&oq=flutter+github+actions&ie=UTF-8) でググれば、既に多くの方々が資料を公開されていますので、  
-レポートでは、主に [**nektos/act**](https://github.com/nektos/act) を使ったローカルでの GitHub Actions ワークフロー対応について紹介します。
+レポートでは、主に [**nektos/act**](https://github.com/nektos/act) を使ったローカルでの GitHub Actions ワークフロー実行について紹介します。
 
 ![act pull request](./images/act_pull_request_mini.png)  
 **act によるローカル GitHub Actions ワークフロー実行例**
@@ -79,7 +79,7 @@ jobs:
 
 ### GitHub (GitHub Actions)
 
-- Pull Request イベントともにテストが実行されるようになり  
+- Pull Request イベントとともにテストが実行されるようになり  
 <img src="./images/on_pull_request_test_start.png" width="800px" border="1" />
 
 - テスト成功で Merge 可能になりました。  
@@ -103,11 +103,12 @@ jobs:
 - 詳細
   - その実態は、act コマンドにより疑似 GitHub Actions システム実行環境を起動して、  
   カレントディレクトリの ワークフロー yml を読み込み、続くオプション指定により、疑似実行環境への環境設定や、  
-  疑似実行環境へのイベントトリガーを実行させることのできるコマンドラインツールです。
+  疑似実行環境へのイベントトリガーを発行させることのできるコマンドラインツールです。
 
 
 - サンプルリポジトリ  
-  サンプルリポジトリ ⇒ [https://github.com/cplee/github-actions-demo](https://github.com/cplee/github-actions-demo) で、act の動作を確認できるそうです。  
+  [https://github.com/cplee/github-actions-demo](https://github.com/cplee/github-actions-demo) は、GitHub Actions ワークフローを含んだリポジトリです。  
+  act を使えば、下記のアニメーションのように GitHub Actions ワークフローがローカルで実行されます。
   <img src="https://github.com/nektos/act/wiki/quickstart/act-quickstart-2.gif" width="800px" border="1" />  
 
 
@@ -193,10 +194,10 @@ $ which act
 
 - act コマンドでの引数について  
 act コマンドは、`act [<event>] [options]` のフォーマットを取り、  
-event には、yml ファイル(ワークフロー)の `on:` で定義した、`push:`や `pull_request:`などの GitHub イベント名を与えます。  
+event には、yml ファイル(ワークフロー)の `on:` で定義した、`push:`や `pull_request:`などの GitHub イベントを与えます。  
 options には、`act ｰl` ⇒ デフォルトアクション一覧や、`act -j test` ⇒ test jobを実行などがあります。  
 *イベントやオプションがない場合、デフォルト値として push イベントが割り当てられます。*  
-*詳細については、[https://github.com/nektos/act#example-commands](https://github.com/nektos/act#example-commands) を参照下さい。*  
+*詳細については、[Example commands](https://github.com/nektos/act#example-commands) ⇒ [https://github.com/nektos/act#example-commands](https://github.com/nektos/act#example-commands) を参照下さい。*  
 
 
 - *ちなみに本件のワークフローでは、`$ act pull_request` コマンドでテストが実行されます。*
@@ -233,8 +234,8 @@ options には、`act ｰl` ⇒ デフォルトアクション一覧や、`act -
 -P ubuntu-18.04=ghcr.io/catthehacker/ubuntu:act-18.04
 ```
 
-- act コマンド実行時に `unix /var/run/docker.sock: connect: permission denied` となる場合の対処  
-  docker コマンド実行に sudo が必要なので、Permission denied が発生しています。  
+- 【補足】act コマンド実行時に `unix /var/run/docker.sock: connect: permission denied` となる場合の対処  
+  docker コマンド実行に sudo が必要な場合、そのままでは Permission denied が発生するのでエラーとなります。  
   この場合は、docker グループにユーザーを所属させれば回避できます。  
   - [ubuntu版Dockerを毎回sudoなしで実行したい](https://qiita.com/ITF_katoyu/items/1bdaaad9f64af86bbfb7)
 
@@ -266,7 +267,7 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 
 
 - act コマンド実行時の留意事項  
-  - 初回実行時には、1GB ほどのダウンロードが発生しました。
+  - 初回実行時には、1GB ほどのイメージ・ダウンロードが発生しました。
   - act がダウンロードしている、Ubuntu のイメージ保管先  
   [catthehacker/docker_images](https://github.com/catthehacker/docker_images) ⇒ [https://github.com/catthehacker/docker_images](https://github.com/catthehacker/docker_images)  
 
@@ -278,6 +279,21 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 
 ![act pull request](./images/act_pull_request.png)  
 
+
+- **ローカル GitHub Actions ワークフロー実行での Widget test 成功の確認**  
+ターミナル出力の末尾には、`flutter exstreme widget test`タスクの 起動 `Run` 〜 テスト成功 `Success` までが出力されています。  
+```shell
+[extreme widget test/flutter extreme widget test] ⭐  Run flutter exstreme widget test
+[extreme widget test/flutter extreme widget test]   🐳  docker exec cmd=[bash --noprofile --norc -e -o pipefail /home/rie/development/workspaces/github_actions/flutter_extreme_test_sample/workflow/4] user= workdir=
+00:10 +0: /home/rie/development/workspaces/github_actions/flutter_extreme_test_sample/test/widget_extreme_test.dart: Counter increments extreme smoke test                                             
+| before increment - counter = 0
+| after increment - counter = 1
+| test end
+00:10 +1: /home/rie/development/workspaces/github_actions/flutter_extreme_test_sample/test/widget_test.dart: Counter increments smoke test                                                             
+| test end
+00:10 +2: All tests passed!                                                                                                                                                                            
+[extreme widget test/flutter extreme widget test]   ✅  Success - flutter exstreme widget test
+```
 
 ## エクストリームテストについて
 
@@ -306,6 +322,7 @@ Widget test であってもアプリのコンポーネントツリー内の任�
   - [main2.dart](https://github.com/cch-robo/flutter_extreme_test_sample/blob/main/lib/main_2.dart)  
   - [integration_test/app_extreme2_test.dart](https://github.com/cch-robo/flutter_extreme_test_sample/blob/main/integration_test/app_extreme2_test.dart)  
   - [test/widget_extreme2_test.dart](https://github.com/cch-robo/flutter_extreme_test_sample/blob/main/test/widget_extreme2_test.dart)  
+  - [独自Factory](https://github.com/cch-robo/flutter_extreme_test_sample/blob/main/lib/swappable_instance_factory.dart) ⇒ [lib/swappable_instance_factory.dart](https://github.com/cch-robo/flutter_extreme_test_sample/blob/main/lib/swappable_instance_factory.dart)  
 
 
 - 【留意事項】エクストリームテストで、integration test と widget test で同一内容のテストが行わることの確認。  
